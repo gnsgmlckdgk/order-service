@@ -1,0 +1,50 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.polarbookshop'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// 스프링 데이터 R2DBC
+	implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+	// 유효성 검사
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// 스프링 리액티브 웹 : 리액티브 웹 애플리케이션을 구축하기 위한 라이브러리를 제공하면 네티를 기본 임베디드 서버로 포함
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// PostgreSQL 및 R2DBC 드라이버
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'org.postgresql:r2dbc-postgresql'
+	// 플라이웨이, JDBC
+	//	implementation 'org.flywaydb:flyway-core'	// 포스트그리SQL 14.4 버전은 플라이웨이 최신버전에서 안됨
+	implementation 'org.flywaydb:flyway-core:9.16.3'
+	runtimeOnly 'org.springframework:spring-jdbc'
+
+	// 스프링 부트 테스트
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// 테스트컨테이너
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	// 리액터 테스트
+	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:postgresql'
+	testImplementation 'org.testcontainers:r2dbc'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
