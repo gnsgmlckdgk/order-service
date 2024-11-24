@@ -11,8 +11,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
-import java.sql.SQLOutput;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
@@ -44,7 +42,6 @@ public class OrderControllerWebFluxTests {
                 .exchange()
                 .expectStatus().is2xxSuccessful()   // 주문이 성공적으로 생성될 것을 예상한다.
                 .expectBody(Order.class).value(actualOrder -> {
-                    System.out.println("actualOrder = " + actualOrder);
                     assertThat(actualOrder).isNotNull();
                     assertThat(actualOrder.status()).isEqualTo(OrderStatus.REJECTED);
                 });
