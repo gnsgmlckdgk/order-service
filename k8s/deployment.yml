@@ -28,9 +28,12 @@ spec:
         # 파드 이름
         - name: order-service
           # 컨테이너를 실행하기 위해 사용할 이미지. 태그가 정의되지 않으면 latest가 암묵적으로 사용된다.
-          image: order-service
-          # 이미지가 로컬에 없는 경우에만 컨테이너 저장소에서 이미지를 다운로드 받을 것을 쿠버네티스에게 지시한다.
+          # 도커 이미지 저장소가 아니라 내가 올린 깃허브 이미지 저장소에서 다운로드
+          image: ghcr.io/gnsgmlckdgk/order-service:latest
+          # 이미지가 로컬에 없는 경우에만
+          # 컨테이너 저장소(내가 올린 깃허브 컨테이너 저장소)에서 이미지를 다운로드 받을 것을 쿠버네티스에게 지시한다.
           imagePullPolicy: IfNotPresent
+
           # 쿠버네티스 파드에 SIGTERM 신호를 보내기 전에 5초를 기다리게 한다.
           lifecycle:
             preStop:
@@ -44,9 +47,12 @@ spec:
             # 메모리 계산을 위한 스레드의 수를 설정하기 위한 패키토 빌드팩 환경 변수
             - name: BPL_JVM_THREAD_COUNT
               value: "50"
-            # 이전에 배포된 PostgreSQL 파드를 가리키는 spring.datasource.url 속성의 값
-            - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://polar-postgres/polardb_order
-            # 컨피그 서비스 url를 지정하도록 설정 [80 -> 8888]
+            # R2DBC 설정
+            - name: SPRING_R2DBC_URL
+              value: r2dbc:postgresql://polar-postgres:5432/polardb_order
+            # Flayway 설정
+            - name: SPRING_FLYWAY_URL
+              value: jdbc:postgresql://polar-postgres:5432/polardb_order
+            # 컨피그 서비스 url를 지정하도록 설정
             - name: SPRING_CLOUD_CONFIG_URI
               value: http://config-service
