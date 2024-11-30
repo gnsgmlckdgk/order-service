@@ -32,7 +32,9 @@ spec:
           image: ghcr.io/gnsgmlckdgk/order-service:latest
           # 이미지가 로컬에 없는 경우에만
           # 컨테이너 저장소(내가 올린 깃허브 컨테이너 저장소)에서 이미지를 다운로드 받을 것을 쿠버네티스에게 지시한다.
-          imagePullPolicy: IfNotPresent
+          #imagePullPolicy: IfNotPresent
+          # 무조건 저장소에서 새로 받아옴(로컬에 있어도)
+          imagePullPolicy: Always
 
           # 쿠버네티스 파드에 SIGTERM 신호를 보내기 전에 5초를 기다리게 한다.
           lifecycle:
