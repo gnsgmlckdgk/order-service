@@ -1,6 +1,5 @@
 package com.polarbookshop.orderservice.config;
 
-import ch.qos.logback.core.net.server.Client;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
