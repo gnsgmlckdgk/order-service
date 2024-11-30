@@ -58,3 +58,6 @@ spec:
             # 컨피그 서비스 url를 지정하도록 설정
             - name: SPRING_CLOUD_CONFIG_URI
               value: http://config-service
+            # 'testdata' 스프링 프로파일 활성화
+            - name: SPRING_PROFILES_ACTIVE
+              value: testdata
