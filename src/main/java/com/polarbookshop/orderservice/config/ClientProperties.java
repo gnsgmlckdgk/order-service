@@ -15,8 +15,4 @@ public record ClientProperties(
         URI catalogServiceUri,
 
         String greeting
-) {
-        public ClientProperties {
-                log.info("polar gretting = {}", greeting);
-        }
-}
+) {}
