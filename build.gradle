@@ -46,6 +46,8 @@ dependencies {
 
 	// 스프링클라우드 컨피그 서버
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'  // Config Server 관련해서도 reactive 스택에 맞는 의존성이 필요
+
 	implementation 'org.springframework.retry:spring-retry'					// 스프링 리트라이
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'	// 스프링 엑츄에이터
 
