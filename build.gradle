@@ -46,14 +46,6 @@ dependencies {
 
 	// 스프링클라우드 컨피그
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'		// 스프링 클라우드
-	// 없어도 되는거 같음
-//	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'  	// Config Server 관련해서도 reactive 스택에 맞는 의존성이 필요
-//	// Spring Cloud Config를 위한 다른 의존성들
-//	implementation 'org.springframework.cloud:spring-cloud-starter'
-//	implementation 'org.springframework.cloud:spring-cloud-context'
-
-	implementation 'org.springframework.retry:spring-retry'					// 스프링 리트라이
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'	// 스프링 엑츄에이터
 
 	// lombok
 	compileOnly 'org.projectlombok:lombok'
