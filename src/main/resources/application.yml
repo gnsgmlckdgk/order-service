@@ -47,3 +47,4 @@ management:
 
 polar:
   catalog-service-uri: "http://catalog-service"
+  greeting: Welcome to the local book order!
