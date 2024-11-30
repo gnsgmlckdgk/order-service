@@ -46,4 +46,4 @@ management:
         include: refresh  # HTTP를 통해 /actuator/refresh 엔드포인트를 노출한다.[ 컨피그 서버 설정 가져와 새로 적용 ]
 
 polar:
-  catalog-service-uri: "http://localhost:9001"
+  catalog-service-uri: "http://catalog-service:9001"
